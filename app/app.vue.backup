@@ -1,0 +1,110 @@
+<script setup lang="ts">
+import { Icon } from '@iconify/vue'
+import { useLinksStore } from '../../stores/links' // 改为相对路径
+import type { LinkItem } from '../../stores/links' // 改为相对路径
+
+const store = useLinksStore()
+const showModal = ref(false)
+const activeItem = ref<LinkItem | null>(null)
+
+// 打开弹窗处理
+const handleOpen = (item: LinkItem) => {
+  activeItem.value = item
+  showModal.value = true
+}
+
+// 关闭弹窗
+const closeModal = () => {
+  showModal.value = false
+  setTimeout(() => activeItem.value = null, 300) // 等待动画结束
+}
+</script>
+
+<template>
+  <div class="min-h-screen text-white font-sans selection:bg-pink-500 selection:text-white flex items-center justify-center p-4">
+    <TheBackground />
+
+    <main class="glass-panel w-full max-w-2xl rounded-3xl p-8 md:p-12 relative overflow-hidden">
+      
+      <header class="text-center mb-10">
+        <div class="relative inline-block">
+          <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=XiaoZhan" alt="Avatar" 
+               class="w-24 h-24 rounded-full border-4 border-white/30 shadow-lg mx-auto mb-4 hover:rotate-12 transition-transform duration-500">
+          <span class="absolute bottom-1 right-1 bg-green-400 w-5 h-5 rounded-full border-2 border-white"></span>
+        </div>
+        <h1 class="text-3xl font-bold tracking-tight mb-2">小战の个人导航</h1>
+        <p class="text-white/70 text-sm font-light">Design / Code / Life</p>
+      </header>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <button 
+          v-for="link in store.links" 
+          :key="link.id"
+          @click="handleOpen(link)"
+          class="glass-btn group flex items-center p-4 rounded-2xl w-full text-left relative overflow-hidden"
+        >
+          <div :class="`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 bg-gradient-to-r ${link.color}`"></div>
+          
+          <div class="p-3 bg-white/10 rounded-xl mr-4 group-hover:scale-110 transition-transform">
+             <Icon :icon="link.icon" class="w-6 h-6 text-white" />
+          </div>
+          <div>
+            <h3 class="font-bold text-lg">{{ link.title }}</h3>
+            <p class="text-xs text-white/60">{{ link.description }}</p>
+          </div>
+          <Icon icon="mdi:chevron-right" class="ml-auto w-5 h-5 text-white/40 group-hover:translate-x-1 transition-transform" />
+        </button>
+      </div>
+
+      <footer class="mt-12 text-center text-xs text-white/30">
+        © 2025 Xiao Zhan. Built with Nuxt 3 & Vue 3.5
+      </footer>
+    </main>
+
+    <Teleport to="body">
+      <Transition name="modal">
+        <div v-if="showModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div class="absolute inset-0 bg-black/40 backdrop-blur-md" @click="closeModal"></div>
+          
+          <div class="bg-gray-900/80 border border-white/10 text-white rounded-3xl p-8 max-w-sm w-full relative shadow-2xl transform transition-all z-10">
+            <button @click="closeModal" class="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors">
+              <Icon icon="mdi:close" class="w-6 h-6" />
+            </button>
+            
+            <div class="flex flex-col items-center text-center">
+              <div :class="`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br ${activeItem?.color}`">
+                <Icon :icon="activeItem?.icon || ''" class="w-8 h-8 text-white" />
+              </div>
+              <h2 class="text-2xl font-bold mb-2">前往 {{ activeItem?.title }}?</h2>
+              <p class="text-white/60 mb-8">{{ activeItem?.description }}</p>
+              
+              <a :href="activeItem?.url" target="_blank" class="w-full py-3 bg-white text-black font-bold rounded-xl hover:scale-105 transition-transform">
+                立即访问
+              </a>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
+  </div>
+</template>
+
+<style>
+/* Vue Transition 动画定义 */
+.modal-enter-active,
+.modal-leave-active {
+  transition: all 0.3s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+  transform: scale(0.95); /* 略微缩放效果 */
+}
+
+/* 确保 backdrop 模糊过渡顺滑 */
+.modal-enter-from .backdrop-blur-md,
+.modal-leave-to .backdrop-blur-md {
+  backdrop-filter: blur(0);
+}
+</style>
