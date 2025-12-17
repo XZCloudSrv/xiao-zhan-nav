@@ -50,8 +50,21 @@ export default defineNuxtConfig({
     '/api/**': { cors: true }
   },
   
+  // 重要修改：只在构建时检查类型，开发时禁用
   typescript: {
     strict: true,
-    typeCheck: true
+    typeCheck: 'build'  // 修改这里：只在构建时检查，不在开发时检查
+  },
+  
+  // 添加 Vite 配置来避免问题
+  vite: {
+    server: {
+      fs: {
+        strict: false
+      }
+    },
+    optimizeDeps: {
+      exclude: ['vue-tsc']
+    }
   }
 })

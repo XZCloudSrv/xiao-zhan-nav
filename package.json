@@ -1,13 +1,27 @@
 {
   "name": "xiao-zhan-nav",
+  "version": "1.0.0",
+  "description": "一个美观实用的导航网站，基于 Nuxt 3 开发",
+  "keywords": ["navigation", "vue3", "nuxt3", "tailwindcss", "opensource"],
+  "author": "XZCloudSrv",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XZCloudSrv/xiao-zhan-nav.git"
+  },
+  "bugs": {
+    "url": "https://github.com/XZCloudSrv/xiao-zhan-nav/issues"
+  },
+  "homepage": "https://github.com/XZCloudSrv/xiao-zhan-nav#readme",
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
     "dev": "nuxt dev",
+    "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "clean": "rm -rf .nuxt node_modules/.cache dist .output"
   },
   "dependencies": {
     "@iconify/vue": "^5.0.0",
@@ -26,5 +40,9 @@
     "@types/node": "^25.0.3",
     "vite-tsconfig-paths": "^6.0.2",
     "vue-tsc": "^3.1.8"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }
