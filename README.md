@@ -55,10 +55,10 @@ cd xiao-zhan-nav
 
 ```bash
 # 推荐使用 npm
-# npm install
+npm install
 
 # 或者使用 pnpm
-pnpm install
+# pnpm install
 ```
 
 ### 4. 运行开发服务器
