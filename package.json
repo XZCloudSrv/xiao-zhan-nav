@@ -1,8 +1,8 @@
 {
   "name": "xiao-zhan-nav",
   "version": "1.0.0",
-  "description": "一个美观实用的导航网站，基于 Nuxt 3 开发",
-  "keywords": ["navigation", "vue3", "nuxt3", "tailwindcss", "opensource"],
+  "description": "一个美观实用的导航网站，基于 Nuxt 4 开发",
+  "keywords": ["navigation", "vue3", "nuxt4", "tailwindcss", "opensource"],
   "author": "XZCloudSrv",
   "license": "MIT",
   "repository": {
