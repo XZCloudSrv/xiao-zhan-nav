@@ -121,11 +121,11 @@ npm run preview
 # 主题样式展示
 
 ## 设备界面展示
-
 | 设备类型    | 白色主题 (白底黑字)                         | 黑色主题 (黑底白字)                         |
 | :------ | :---------------------------------- | :---------------------------------- |
-| **桌面端** | ![[https://raw.githubusercontent.com/XZCloudSrv/xiao-zhan-nav/refs/heads/main//Screenshot_20251218_154217.jpg]] | ![[https://raw.githubusercontent.com/XZCloudSrv/xiao-zhan-nav/refs/heads/main/Screenshot_20251218_154235.jpg]] |
-| **移动端** | ![[https://raw.githubusercontent.com/XZCloudSrv/xiao-zhan-nav/refs/heads/main/Screenshot_20251218_154111.jpg]] | ![[https://raw.githubusercontent.com/XZCloudSrv/xiao-zhan-nav/refs/heads/main/Screenshot_20251218_154130.jpg]] |
+| **桌面端** | ![桌面端白色](https://raw.githubusercontent.com/XZCloudSrv/xiao-zhan-nav/refs/heads/main/Screenshot_20251218_154217.jpg) | ![桌面端黑色](https://raw.githubusercontent.com/XZCloudSrv/xiao-zhan-nav/refs/heads/main/Screenshot_20251218_154235.jpg) |
+| **移动端** | ![移动端白色](https://raw.githubusercontent.com/XZCloudSrv/xiao-zhan-nav/refs/heads/main/Screenshot_20251218_154111.jpg) | ![移动端黑色](https://raw.githubusercontent.com/XZCloudSrv/xiao-zhan-nav/refs/heads/main/Screenshot_20251218_154130.jpg) |
+
 ## 🤝 贡献与交流
 
 我们非常欢迎所有形式的贡献，无论是代码、文档还是建议。
